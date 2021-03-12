@@ -17,14 +17,10 @@
 	<p>${country.code}-${country.name} - ${country.continent} -
 		${country.surfaceArea} - ${country.population}</p>
 
-	<h1>Countries list</h1>
-	<form action="list-countries" method="GET">
-		<label>Insert continent:</label> <input type="text"
-			name="nameContinent" /> <input type="submit" value="submit" />
-	</form>
+	
 	<ul>
 		<c:forEach items="${countryList}" var="country">
-			<li>${country.name}</li>
+			<li><a href="">${country.name}</a></li>
 		</c:forEach>
 	</ul>
 </body>
