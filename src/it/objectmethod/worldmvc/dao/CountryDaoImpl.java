@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.objectmethod.worldmvc.config.ConnectionFactory;
-import it.objectmethod.worldmvc.domain.City;
 import it.objectmethod.worldmvc.domain.Country;
 
 public class CountryDaoImpl implements ICountryDao {
@@ -16,7 +15,6 @@ public class CountryDaoImpl implements ICountryDao {
 	public List<Country> getCountryByName(String nameCountry, String nameContinent) {
 		Connection conn = ConnectionFactory.getConnection();
 		List<Country> countries = new ArrayList<Country>();
-		
 
 		String sql = "SELECT * FROM country AS c WHERE ( '' LIKE ? OR c.Name LIKE ? ) AND ( '' = ? OR c.Continent = ?);";
 		try {
@@ -46,35 +44,5 @@ public class CountryDaoImpl implements ICountryDao {
 
 		return countries;
 	}
-
-//	@Override
-//	public List<Country> getCountryByContinent(String continent) {
-//		Connection conn = ConnectionFactory.getConnection();
-//		List<Country> countries = new ArrayList<Country>();
-//		String sql = "SELECT * FROM country WHERE Continent = ?";
-//
-//		try {
-//			PreparedStatement stmt = conn.prepareStatement(sql);
-//			stmt.setString(1, continent);
-//
-//			ResultSet rs = stmt.executeQuery();
-//			while (rs.next()) {
-//				Country country = new Country();
-//				country.setCode(rs.getString("code"));
-//				country.setName(rs.getString("name"));
-//				country.setContinent(rs.getString("continent"));
-//				country.setPopulation(rs.getInt("population"));
-//				country.setSurfaceArea(rs.getInt("surfaceArea"));
-//				countries.add(country);
-//			}
-//			rs.close();
-//			stmt.close();
-//			conn.close();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//
-//		return countries;
-//	}
 
 }

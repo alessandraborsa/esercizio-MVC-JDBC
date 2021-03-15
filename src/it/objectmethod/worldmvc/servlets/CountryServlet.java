@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import it.objectmethod.worldmvc.dao.CountryDaoImpl;
 import it.objectmethod.worldmvc.dao.ICountryDao;
+
 import it.objectmethod.worldmvc.domain.Country;
 
 @WebServlet("/country")
@@ -26,19 +27,10 @@ public class CountryServlet extends HttpServlet {
 		String nameContinent = req.getParameter("nameContinent");
 		List<Country> countryList = new ArrayList<>();
 		ICountryDao countryDao = new CountryDaoImpl();
-	
-		
-	
-		countryList = countryDao.getCountryByName(nameCountry, nameContinent);
-//		req.setAttribute("nameCountry", nameCountry);
-//		req.setAttribute("nameContinent", nameContinent);
-		
-		session.setAttribute("countryList", countryList);
 
-//		List<Country> countryList = new ArrayList<>();
-//		ICountryDao countryDao2 = new CountryDaoImpl();
-//		countryList = countryDao2.getCountryByContinent(nameContinent);
-//		req.setAttribute("countryList", countryList);
+		countryList = countryDao.getCountryByName(nameCountry, nameContinent);
+
+		session.setAttribute("countryList", countryList);
 
 		req.getRequestDispatcher("show-country.jsp").forward(req, resp);
 

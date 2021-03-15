@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<h2>SESSION PLAYGROUND LOGIN</h2>
+	<h2>LOGIN</h2>
 
 
 	<form action="login" method="POST">
