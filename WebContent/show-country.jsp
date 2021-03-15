@@ -8,20 +8,39 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<h5>Logged User: ${logged_user}</h5>
+	<a href="/esercizioMVC-JDBC/logout">LOGOUT</a>
 	<h1>Insert country and continent</h1>
 	<form action="country" method="GET">
 		<label>country: <input type="text" name="nameCountry" />
 		</label> <label>continent: <input type="text" name="nameContinent" /></label>
 		<input type="submit" value="Submit" />
-	</form>
-	<p>${country.code}-${country.name} - ${country.continent} -
-		${country.surfaceArea} - ${country.population}</p>
 
-	
+	</form>
+
+
+	<a href="/esercizioMVC-JDBC/country?nameCountry=&nameContinent=Asia">Asia</a>
+	<a href="/esercizioMVC-JDBC/country?nameCountry=&nameContinent=Europe">Europe</a>
+	<a
+		href="/esercizioMVC-JDBC/country?nameCountry=&nameContinent=North America">North
+		America</a>
+	<a href="/esercizioMVC-JDBC/country?nameCountry=&nameContinent=Africa">Africa</a>
+	<a href="/esercizioMVC-JDBC/country?nameCountry=&nameContinent=Oceania">Oceania</a>
+	<a
+		href="/esercizioMVC-JDBC/country?nameCountry=&nameContinent=Antarctica">Antarctica</a>
+	<a
+		href="/esercizioMVC-JDBC/country?nameCountry=&nameContinent=South America">South
+		America</a>
 	<ul>
 		<c:forEach items="${countryList}" var="country">
-			<li><a href="">${country.name}</a></li>
+			<li><a href="/esercizioMVC-JDBC/city?code=${country.code}">${country.name}</a>
+				Population: ${country.population} Cod: ${country.code} Continent:
+				${country.continent} Area: ${country.surfaceArea}</li>
 		</c:forEach>
+
+
+
 	</ul>
 </body>
 </html>

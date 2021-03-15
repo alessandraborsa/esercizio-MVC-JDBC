@@ -8,50 +8,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.objectmethod.worldmvc.config.ConnectionFactory;
-
+import it.objectmethod.worldmvc.domain.City;
 import it.objectmethod.worldmvc.domain.Country;
 
 public class CountryDaoImpl implements ICountryDao {
 
-	@Override
-	public Country getCountryByName(String nameCountry) {
+	public List<Country> getCountryByName(String nameCountry, String nameContinent) {
 		Connection conn = ConnectionFactory.getConnection();
-		Country country = null;
+		List<Country> countries = new ArrayList<Country>();
+		
 
-		String sql = "SELECT * FROM country WHERE name = ? ";
+		String sql = "SELECT * FROM country AS c WHERE ( '' LIKE ? OR c.Name LIKE ? ) AND ( '' = ? OR c.Continent = ?);";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, nameCountry);
-
-			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				country = new Country();
-				country.setCode(rs.getString("code"));
-				country.setName(rs.getString("name"));
-				country.setContinent(rs.getString("continent"));
-				country.setPopulation(rs.getInt("population"));
-				country.setSurfaceArea(rs.getInt("surfaceArea"));
-			}
-			rs.close();
-			stmt.close();
-			conn.close();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return country;
-	}
-
-	@Override
-	public List<Country> getCountryByContinent(String continent) {
-		Connection conn = ConnectionFactory.getConnection();
-		List<Country> countries = new ArrayList<Country>();
-		String sql = "SELECT * FROM country WHERE Continent = ?";
-
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, continent);
+			stmt.setString(2, nameCountry);
+			stmt.setString(3, nameContinent);
+			stmt.setString(4, nameContinent);
 
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
@@ -66,11 +39,42 @@ public class CountryDaoImpl implements ICountryDao {
 			rs.close();
 			stmt.close();
 			conn.close();
-		} catch (Exception e) {
+
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 		return countries;
 	}
+
+//	@Override
+//	public List<Country> getCountryByContinent(String continent) {
+//		Connection conn = ConnectionFactory.getConnection();
+//		List<Country> countries = new ArrayList<Country>();
+//		String sql = "SELECT * FROM country WHERE Continent = ?";
+//
+//		try {
+//			PreparedStatement stmt = conn.prepareStatement(sql);
+//			stmt.setString(1, continent);
+//
+//			ResultSet rs = stmt.executeQuery();
+//			while (rs.next()) {
+//				Country country = new Country();
+//				country.setCode(rs.getString("code"));
+//				country.setName(rs.getString("name"));
+//				country.setContinent(rs.getString("continent"));
+//				country.setPopulation(rs.getInt("population"));
+//				country.setSurfaceArea(rs.getInt("surfaceArea"));
+//				countries.add(country);
+//			}
+//			rs.close();
+//			stmt.close();
+//			conn.close();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//		return countries;
+//	}
 
 }
