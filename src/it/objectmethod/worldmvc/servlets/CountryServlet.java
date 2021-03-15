@@ -25,12 +25,22 @@ public class CountryServlet extends HttpServlet {
 		HttpSession session = req.getSession();
 		String nameCountry = req.getParameter("nameCountry");
 		String nameContinent = req.getParameter("nameContinent");
-		List<Country> countryList = new ArrayList<>();
-		ICountryDao countryDao = new CountryDaoImpl();
+		if(!nameContinent.equals("")&&(nameCountry.equals(""))) {
+			List<Country> countryList = new ArrayList<>();
+			ICountryDao countryDao = new CountryDaoImpl();
 
-		countryList = countryDao.getCountryByName(nameCountry, nameContinent);
+			countryList = countryDao.getCountryByName(nameCountry, nameContinent);
 
-		session.setAttribute("countryList", countryList);
+			session.setAttribute("countryList", countryList);
+		} else {
+			List<Country> countryListC = new ArrayList<>();
+			ICountryDao countryDaoC = new CountryDaoImpl();
+
+			countryListC = countryDaoC.getCountryByName(nameCountry, nameContinent);
+
+			session.setAttribute("countryListC", countryListC);
+		}
+		
 
 		req.getRequestDispatcher("show-country.jsp").forward(req, resp);
 

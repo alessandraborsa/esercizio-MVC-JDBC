@@ -19,7 +19,7 @@
 
 	</form>
 
-
+	<p></p>
 	<a href="/esercizioMVC-JDBC/country?nameCountry=&nameContinent=Asia">Asia</a>
 	<a href="/esercizioMVC-JDBC/country?nameCountry=&nameContinent=Europe">Europe</a>
 	<a
@@ -32,15 +32,20 @@
 	<a
 		href="/esercizioMVC-JDBC/country?nameCountry=&nameContinent=South America">South
 		America</a>
+
 	<ul>
-		<c:forEach items="${countryList}" var="country">
+		<c:forEach items="${countryListC}" var="country">
 			<li><a href="/esercizioMVC-JDBC/city?code=${country.code}">${country.name}</a>
 				Population: ${country.population} Cod: ${country.code} Continent:
 				${country.continent} Area: ${country.surfaceArea}</li>
 		</c:forEach>
+	</ul>
 
-
-
+	<ul>
+		<c:forEach items="${countryList}" var="country">
+			<li><a href="/esercizioMVC-JDBC/city?code=${country.code}">${country.name}</a>
+				Population: ${country.population}</li>
+		</c:forEach>
 	</ul>
 </body>
 </html>
