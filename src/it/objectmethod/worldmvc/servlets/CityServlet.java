@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import it.objectmethod.worldmvc.dao.ICityDao;
-import it.objectmethod.worldmvc.dao.CityDaoImpl;
+import it.objectmethod.worldmvc.dao.impl.CityDaoImpl;
 import it.objectmethod.worldmvc.domain.City;
 
 @WebServlet("/city")

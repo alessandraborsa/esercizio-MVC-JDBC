@@ -1,4 +1,4 @@
-package it.objectmethod.worldmvc.dao;
+package it.objectmethod.worldmvc.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.objectmethod.worldmvc.config.ConnectionFactory;
+import it.objectmethod.worldmvc.dao.ICountryDao;
 import it.objectmethod.worldmvc.domain.Country;
 
 public class CountryDaoImpl implements ICountryDao {

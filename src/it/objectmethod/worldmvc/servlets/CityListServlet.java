@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import it.objectmethod.worldmvc.dao.ICityDao;
-import it.objectmethod.worldmvc.dao.CityDaoImpl;
+import it.objectmethod.worldmvc.dao.impl.CityDaoImpl;
 import it.objectmethod.worldmvc.domain.City;
 
 @WebServlet("/citylist")
@@ -22,7 +22,6 @@ public class CityListServlet extends HttpServlet {
 		
 		String code = req.getParameter("code");
 		
-
 		List<City> cityList = new ArrayList<>();
 		ICityDao cityDaoList = new CityDaoImpl();
 		cityList = cityDaoList.getCityByCountry(code);

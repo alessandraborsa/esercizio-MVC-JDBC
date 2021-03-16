@@ -1,4 +1,4 @@
-package it.objectmethod.worldmvc.dao;
+package it.objectmethod.worldmvc.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

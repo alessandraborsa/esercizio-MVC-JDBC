@@ -10,10 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import it.objectmethod.worldmvc.dao.CountryDaoImpl;
 import it.objectmethod.worldmvc.dao.ICountryDao;
-
+import it.objectmethod.worldmvc.dao.impl.CountryDaoImpl;
 import it.objectmethod.worldmvc.domain.Country;
 
 @WebServlet("/country")
@@ -36,7 +34,6 @@ public class CountryServlet extends HttpServlet {
 
 		countryList = countryDao.getCountryByName(nameCountry, nameContinent);
 		continents = countryDao.getContinent();
-		
 		req.setAttribute("countryList", countryList);
 		req.setAttribute("continents", continents);
 
