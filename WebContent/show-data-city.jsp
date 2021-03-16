@@ -17,11 +17,13 @@
 	</form>
 	<p>${city.id}-${city.name}-${city.countryCode} - ${city.district} -
 		${city.population}</p>
-	<ul>
+		
+		<ul>
 		<c:forEach items="${cityList}" var="city">
 			<li><a href="/esercizioMVC-JDBC/city?nameCity=${city.name}">${city.name}</a></li>
 		</c:forEach>
 	</ul>
+	
 
 </body>
 </html>

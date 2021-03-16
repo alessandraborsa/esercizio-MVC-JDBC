@@ -11,7 +11,6 @@
 
 	<h2>LOGIN</h2>
 
-
 	<form action="login" method="POST">
 		<input type="text" name="username" /> <input type="submit"
 			value="LOGIN">

@@ -34,6 +34,7 @@ public class CountryDaoImpl implements ICountryDao {
 				country.setSurfaceArea(rs.getInt("surfaceArea"));
 				countries.add(country);
 			}
+
 			rs.close();
 			stmt.close();
 			conn.close();
@@ -43,6 +44,29 @@ public class CountryDaoImpl implements ICountryDao {
 		}
 
 		return countries;
+	}
+
+	public List<String> getContinent() {
+		Connection conn = ConnectionFactory.getConnection();
+		List<String> continents = new ArrayList<String>();
+		String sql = "SELECT DISTINCT c.continent FROM country AS c";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				continents.add(rs.getString("continent"));
+			}
+
+			rs.close();
+			stmt.close();
+			conn.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return continents;
 	}
 
 }
